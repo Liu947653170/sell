@@ -1,6 +1,8 @@
 package com.imoocn.sell.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.imoocn.sell.dataobject.OrderDetail;
+import com.imoocn.sell.utils.serializer.DateToLongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -53,10 +55,12 @@ public class OrderDTO {
     /**
      * 创建时间
      */
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date createTime;
     /**
      * 更新时间
      */
+    @JsonSerialize(using = DateToLongSerializer.class)
     private Date updateTime;
 
     private List<OrderDetail> orderDetails;
